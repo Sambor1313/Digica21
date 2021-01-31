@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import os
+import io
 
 
 class Book_of_contacts():
@@ -39,15 +40,17 @@ class Book_of_contacts():
         filename = self.handle_letter_input("Saving, enter file name")
         Path(filename+'.json').write_text(data)
 
-    def load(self, path):
-        if os.path.isfile(Path(path)):
-            data_recived = Path(path).read_text()
-            self.contact_list = json.loads(data_recived)
-        else:
-            print("There no such path or file, write valide")
+    def load(self, file):
+        self.contact_list = json.loads(file.read())
+        file.close()
 
     def print_book(self):
+        row_format = "|{:^20}|{:^20}|{:^12}|"
+        print("+{:-^20}+{:-^20}+{:-^12}+".format("", "", ""))
+        print(row_format.format("Name", "Surename", "Number"))
+        print("+{:-^20}+{:-^20}+{:-^12}+".format("", "", ""))
         for contact in self.contact_list:
-            print(contact.get("name"),
-                  contact.get("surename"),
-                  contact.get("number"))
+            print(row_format.format(contact.get("name"),
+                                    contact.get("surename"),
+                                    contact.get("number")))
+        print("+{:-^20}+{:-^20}+{:-^12}+".format("", "", ""))

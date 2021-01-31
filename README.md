@@ -1,18 +1,23 @@
 # Digica interview
 
-Git repository setup
+First task commit is the one for interview.
+Next commits are further refactoring and learning.
 
 ## Table of content
 * [Run](#run)
+* [Setup](#setup)
 * [Author](#author)
 
-## Run
-Run one of two files:
-* python3 weather1.py
-* python3 contact_book2.py [file_name.json]
+## Setup
+```console
+git clone https://github.com/Sambor1313/Digica21.git
+```
 
-In second program if you add no path, you will be able to create new contact_book,
-if you add valid file path to previously created file it will be displad.
+## Run
+With Python 3
+Run one of two files:
+* python weather1.py
+* python contact_book2.py
 
 
 ## Author

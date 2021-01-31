@@ -1,5 +1,5 @@
-
-import sys
+import argparse
+import io
 from book_of_contacts import Book_of_contacts
 
 
@@ -21,7 +21,14 @@ def print_contacts(path):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--saved_contacts",
+                        help="path to save json file",
+                        type=argparse.FileType('r'))
+    args = parser.parse_args()
+
+    if not args.saved_contacts:
         add_contacts()
     else:
-        print_contacts(sys.argv[1])
+        # print(args.saved_contacts)
+        print_contacts(args.saved_contacts)
